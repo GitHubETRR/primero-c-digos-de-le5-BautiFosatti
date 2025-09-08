@@ -3,6 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
+#define NADA 0
 #define UNO 1
 #define DOS 2
 #define TRES 3
@@ -67,10 +68,11 @@ void primerCodigo() {
 void segundoCodigo() {
 	int numero2;
 	int numeroSecreto;
-
+    int cantidadDeIntentos=UNO;
+    
 	printf("\n2-- Tengo un numero del 1 al %d para que adivines\n", NMAX);
 	srand(time(NULL));
-	numeroSecreto = rand() % NMAX + 1;
+	numeroSecreto = rand() % NMAX + UNO;
 
 	do {
 		do {
@@ -78,16 +80,19 @@ void segundoCodigo() {
 			scanf("%d",&numero2);
 		}
 		while((numero2<=0)||(numero2>NMAX));
-
+        
 		if(numero2>numeroSecreto) {
+		    printf("\n--Intento numero: %d\n",cantidadDeIntentos++);
 			printf("\nTe pasaste del numero\n");
 		}
 		if(numero2<numeroSecreto) {
+		    printf("\n--Intento numero: %d\n",cantidadDeIntentos++);
 			printf("\nTe falta para llegar al numero\n");
 		}
+		
 	}
 	while(numero2!=numeroSecreto);
-	printf("\n----Felicidades adivinaste el numero----\n");
+	printf("\n----Felicidades adivinaste el numero en %d intentos----\n",cantidadDeIntentos);
 }
 
 //------------------TercerCodigo---------------------------//
