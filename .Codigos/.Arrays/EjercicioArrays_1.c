@@ -7,7 +7,7 @@ int resultado=0;
 
 int main() {
 	printf("--------------Bienvenido a mi programa--------------");
-	printf("\nNecesito que me escribas 7 numeros para decirte su sumatoria: \n");
+	printf("\nNecesito que me escribas 7 numeros enteros para decirte su sumatoria: \n");
 	for(int i=0; i<TAMVEC; i++) {
 		printf("\n-Numero: %d\n",i+UNO);
 		scanf("%d",&vector[i]);
