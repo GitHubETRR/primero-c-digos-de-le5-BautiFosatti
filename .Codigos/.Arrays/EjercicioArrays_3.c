@@ -1,47 +1,45 @@
 #include <stdio.h>
-#include<time.h>
-#include<stdlib.h>
+#include <stdlib.h>
+#include <time.h>
 
-#define UNO 1
 #define TAMVEC 50
+#define MIN 10
+#define UNO 1
 
-int vector[TAMVEC];
-int contarMayor();
-
-int i;
-int a;
-
-int nMax=0;
-int nRep=0;
+int contarMayor(int vec[], int tam);
 
 int main() {
+	int vector[TAMVEC];
+
 	srand(time(NULL));
 
 	printf("\n--------------Bienvenido a mi programa--------------\n");
-	printf("\n-En este codigo te mostrare la cantidad de veces que se repite el numero entero mas grande desde el 10 al 20 entre 50 valores:\n\n");
+	printf("\nGenerando 50 valores entre 10 y 20:\n\n");
 
-////////////////////////////////CONTAR 50 VECTORES/////////////
-	for(i=0; i<TAMVEC; i++) {
-		vector[i] = rand()%(0+11)+10;
+	for (int i = 0; i < TAMVEC; i++) {
+		vector[i] = rand() % (MIN + UNO) + MIN;
+		printf("vector[%d] = %d\n", i + UNO, vector[i]);
 	}
-	for(i=0; i<TAMVEC; i++) {
-		printf("Vector [%d] = %d\n",i+UNO,vector[i]);
-		
-///////////////////////////NUMERO MAS GRANDE DE LOS 50///////////////////
-		if (vector[i]>nMax) {
-			nMax=vector[i];
+
+	int repite = contarMayor(vector, TAMVEC);
+	printf("\nEl numero mayor se repite %d veces.\n", repite);
+	return 0;
+}
+
+int contarMayor(int vec[], int tam) {
+	int mayor = vec[0];
+	int rep = 0;
+
+	for (int i = 1; i < tam; i++) {
+		if (vec[i] > mayor) {
+			mayor = vec[i];
 		}
 	}
-////////////////////////////CUANTO SE REPITE////////////
-
-    for(i=0;i<TAMVEC;i++){
-        if (vector[i]==nMax){
-            nRep=nRep+UNO;
-        }
-        
-    }
 	
-	printf("\nEl maximo del maximo %d y se repite %d veces",nMax,nRep);
-	return 0;
-
+	for (int i = 0; i < tam; i++) {
+		if (vec[i] == mayor) {
+			rep++;
+		}
+	}
+	return rep;
 }
