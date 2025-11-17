@@ -1,0 +1,48 @@
+#include <stdio.h>
+
+#define UNO 1
+
+void pasaMinuscula(char texto[]);
+int vocales(char texto[]);
+
+int main() {
+    char cadena[100];
+
+    printf("\n--------------Bienvenido a mi programa--------------\n");
+    printf("\n-En este codigo voy a convertir un texto a minusculas y luego contar cuantas vocales tiene:\n\n");
+
+    printf("Ingrese un texto: ");
+    fgets(cadena, 100, stdin);
+
+    pasaMinuscula(cadena);
+
+    int cantVocales = vocales(cadena);
+
+    printf("\nTexto en minuscula: %s", cadena);
+    printf("Cantidad de vocales: %d\n", cantVocales);
+
+    return 0;
+}
+
+void pasaMinuscula(char texto[]) {
+    int i = 0;
+    while (texto[i] != '\0') {
+        if (texto[i] >= 'A' && texto[i] <= 'Z') {
+            texto[i] = texto[i] + 32;
+        }
+        i += UNO;
+    }
+}
+
+int vocales(char texto[]) {
+    int cont = 0;
+    int i = 0;
+
+    while (texto[i] != '\0') {
+        if (texto[i]=='a' || texto[i]=='e' || texto[i]=='i' || texto[i]=='o' || texto[i]=='u') {
+            cont += UNO;
+        }
+        i += UNO;
+    }
+    return cont;
+}
