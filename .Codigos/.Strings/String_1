@@ -1,0 +1,29 @@
+#include <stdio.h>
+
+#define UNO 1
+
+int Dimension(char texto[]);
+
+int main() {
+    char cadena[100];
+
+    printf("\n--------------Bienvenido a mi programa--------------\n");
+    printf("\n-En este codigo voy a calcular el largo de un texto ingresado por teclado:\n\n");
+
+    printf("Ingrese un texto: ");
+    fgets(cadena, 100, stdin);
+
+    int largo = Dimension(cadena);
+
+    printf("\nEl largo del texto es: %d\n", largo);
+
+    return 0;
+}
+
+int Dimension(char texto[]) {
+    int i = 0;
+    while (texto[i] != '\0' && texto[i] != '\n') {
+        i += UNO;
+    }
+    return i;
+}
