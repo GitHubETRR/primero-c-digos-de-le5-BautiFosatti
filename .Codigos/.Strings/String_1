@@ -1,29 +1,22 @@
 #include <stdio.h>
-
-#define UNO 1
+#include <string.h>
 
 int Dimension(char texto[]);
 
 int main() {
-    char cadena[100];
+    char cad[100];
+    
+    printf("---------Bienvenido a mi programa---------\n");
+    printf("Ingrese una palabra para que te diga su largo: \n");
+    scanf("%99s", cad); 
 
-    printf("\n--------------Bienvenido a mi programa--------------\n");
-    printf("\n-En este codigo voy a calcular el largo de un texto ingresado por teclado:\n\n");
+    int largo = Dimension(cad);
 
-    printf("Ingrese un texto: ");
-    fgets(cadena, 100, stdin);
-
-    int largo = Dimension(cadena);
-
-    printf("\nEl largo del texto es: %d\n", largo);
+    printf("\nLargo de la cadena: %d\n", largo);
 
     return 0;
 }
 
 int Dimension(char texto[]) {
-    int i = 0;
-    while (texto[i] != '\0' && texto[i] != '\n') {
-        i += UNO;
-    }
-    return i;
+    return strlen(texto);
 }
