@@ -1,35 +1,35 @@
 #include <stdio.h>
-
+#include <ctype.h>
 #define UNO 1
 
-void Invertir(char origen[], char destino[]);
+void Invertir(char normal[],char alRevez[]);
 
 int main() {
-    char cadena[100], invertida[100];
+    char texto[100];
+    char textoInv[100];
+    
+    printf("----------Bienvenido a mi programa-----------\n");
+    printf("Voy a invertir tu texto:\n");
+    scanf("%[^\n]", texto);
 
-    printf("\n--------------Bienvenido a mi programa--------------\n");
-    printf("\n-En este codigo voy a invertir un texto y mostrarlo al reves:\n\n");
-
-    printf("Ingrese un texto: ");
-    fgets(cadena, 100, stdin);
-
-    Invertir(cadena, invertida);
-
-    printf("\nTexto invertido: %s\n", invertida);
-
+    Invertir(texto,textoInv);
+    
+    printf("\nTexto en normal: %s\n", texto);
+    printf("Texto en invertido: %s\n", textoInv);
+    
     return 0;
 }
 
-void Invertir(char origen[], char destino[]) {
-    int len = 0;
-
-    while (origen[len] != '\0' && origen[len] != '\n') {
-        len += UNO;
+void Invertir(char normal[], char alRevez[]) {
+    int largo = 0;
+    
+    for (int i = 0; normal[i] != '\0'; i++) {
+        largo++;
+    }
+    
+    for (int i = 0; i < largo; i++) {
+        alRevez[i] = normal[largo - 1 - i];
     }
 
-    for (int i = 0; i < len; i++) {
-        destino[i] = origen[len - UNO - i];
-    }
-
-    destino[len] = '\0';
+    alRevez[largo] = '\0';
 }
